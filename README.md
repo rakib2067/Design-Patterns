@@ -22,3 +22,27 @@ This course covers 23 design patterns that were covered in [Design Patterns: Ele
   - Creational: Different ways to create objects
   - Structural: The Relationships between objects
   - Behavioural: The Interaction/Communication between objects
+
+## UML Relationships
+
+UML (Unified Modeling Language) is a popular language used to model OOP systems:
+
+- A Class in UML is represented by a Square block, with the name, fields and methods of that class
+- Relationships between classes is conveyed using arrows:
+
+- Inheritance is shown using a arrow from the child class to the parent
+- Composition Relationships or the `has a` relationships are when a class is composed of another
+  - It is indicated through a diamond arrow
+  - Indicated that one class contains a field of type `other class`
+  ```ts
+  class Shape {
+    private _size: Size;
+  }
+  ```
+- The Dependency Relationship is denoted using a dashed arrow
+  - In this relationship, a class references another class
+  ```ts
+  class Shape {
+    render(doc: Document) {}
+  }
+  ```
