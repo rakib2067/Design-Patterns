@@ -7,6 +7,8 @@ This repo will contain the code and notes for the course: [The Ultimate Design P
 ## Table of Contents
 
 - [Section 1: Design Patterns Introduction](#section-1-design-patterns-introduction)
+- [Section 2: Memento Pattern](#section-2-memento-pattern)
+- [Section 3: Design Patterns Introduction](#section-1-design-patterns-introduction)
 
 ## Section 1: Design Patterns Introduction
 
@@ -46,3 +48,14 @@ UML (Unified Modeling Language) is a popular language used to model OOP systems:
     render(doc: Document) {}
   }
   ```
+
+## Section 2: Memento Pattern
+
+This pattern is used on implementing undo/redo mechanisms.
+
+In the case that we want to build a code editor that implements this mechanism:
+
+- First we create the class `Editor`
+- With a property `content`
+  - With a getter and setter for this field
+  - Should also have the feature to undo any changes
