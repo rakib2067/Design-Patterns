@@ -64,10 +64,11 @@ Implementing Undo:
 
 The most efficient way of implementing this is by using 3 classes:
 
-- The Editor: To contain the current content/input
+- The Editor/Originator: To contain the current content/input
   - It has a content property
   - a `createState` method, that stores the current state of the editor object inside a `EditorState` object and returns it
   - a `restore` method that takes the `EditorState` object and brings the editor back to that state
-- The EditorState: To store the different state of the editor
-- The History: To keep track of the history of the EditorState
-  - Contains method push to save state and pop to remove
+- The EditorState/Memento: To store the different state of the editor
+- The History/Caretaker: To keep track of the history of the EditorState
+  - Contains method push to add `EditorState` to it's array
+  - Pop to remove the last state from the array

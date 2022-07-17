@@ -1,5 +1,24 @@
+import { Document } from "./Document";
 import { Editor } from "./Editor";
-import { History } from "./History";
+import { CareTaker, History } from "./CareTaker";
+
+
+let document= new Document();
+let careTaker=new CareTaker()
+document.content="Lorem impsum dolor";
+document.fontName="Inter";
+document.fontSize=16;
+
+careTaker.push(document.createState())
+document.content="Changes"
+document.fontName="Roboto"
+document.fontSize=10;
+
+console.log(document.toString())
+
+document.restore(careTaker.pop())
+
+console.log(document.toString())
 
 
 let editor = new Editor();

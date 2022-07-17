@@ -1,4 +1,4 @@
-import { EditorState } from "./EditorState";
+import { EditorState } from "./Memento";
 
 
 export class Editor{
