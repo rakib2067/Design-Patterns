@@ -65,10 +65,67 @@ Implementing Undo:
 The most efficient way of implementing this is by using 3 classes:
 
 - The Editor/Originator: To contain the current content/input
+
   - It has a content property
   - a `createState` method, that stores the current state of the editor object inside a `EditorState` object and returns it
   - a `restore` method that takes the `EditorState` object and brings the editor back to that state
+
+  ```ts
+  export class Document {
+    private _content!: string;
+    private _fontName!: string;
+    private _fontSize!: number;
+
+    createState() {
+      return new Memento(this._content, this._fontName, this._fontSize);
+    }
+
+    restore({ content, fontName, fontSize }: Memento) {
+      this._content = content;
+      this._fontName = fontName;
+      this._fontSize = fontSize;
+    }
+  }
+  ```
+
 - The EditorState/Memento: To store the different state of the editor
+
+  ```ts
+  // Memento class to save previous states
+  export class Memento {
+    //Contains same fields as our originator
+    constructor(
+      private readonly _content: string,
+      private readonly _fontName: string,
+      private readonly _fontSize: number
+    ) {}
+
+    get content() {
+      return this._content;
+    }
+    get fontName() {
+      return this._fontName;
+    }
+    get fontSize() {
+      return this._fontSize;
+    }
+  }
+  ```
+
 - The History/Caretaker: To keep track of the history of the EditorState
+
   - Contains method push to add `EditorState` to it's array
   - Pop to remove the last state from the array
+
+  ```ts
+  export class CareTaker {
+    private states: Memento[] = [];
+
+    push(state: Memento) {
+      this.states.push(state);
+    }
+    pop() {
+      return this.states.pop() as Memento;
+    }
+  }
+  ```
