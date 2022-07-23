@@ -72,8 +72,22 @@ Polymorphism:
 - Essentially, our objects are able to take on different forms at runtime, depending on the type of subclass they are
 
 ### SOLID Principles
+Solid is an acronym for the five OOP Design principles. Said principles allow for us to write maintainable which can be easily extended as a project grows.
 
-Single-Responsibility Principle
+Single-Responsibility Principle:
+
+This principle states: "A class should have one and only one reason to change, meaning that a class should have only one job."
+
+- Essentially all our classes should only have one specific purpose/responsibility and therefore only ever have one reason to change
+  - An example of this could be a calorie tracker class which has a method to track calories and another to alert the user they're exceeding their calorie count
+  - The problem here is that the calorie track has 2 jobs, tracking calories and alerting users, and say for instance, if the alert method had to change from printing to sending an email, the structure of the class would also have to change
+  - Therefore, it would be best to create a separate class/module to handle the alerting of users, so that if it needs to be changed, it won't affect the structure of the calorie tracker class
+
+Open/Closed Principle:
+
+The Open-Closed Principle requires that classes should be open for extension and closed to modification.
+
+
 
 ## UML Relationships
 
