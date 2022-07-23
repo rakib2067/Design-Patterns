@@ -25,3 +25,4 @@ export class CareTaker{
           return this.states.pop() as Memento;
      }
 }
+

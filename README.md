@@ -25,6 +25,56 @@ This course covers 23 design patterns that were covered in [Design Patterns: Ele
   - Structural: The Relationships between objects
   - Behavioural: The Interaction/Communication between objects
 
+### Recap of OOP
+
+Encapsultation:
+
+- This principle states that all data, and methods that operate on said data should be bundled into one unit, better as we know it, a class.
+- Furthermore, this principle ensures that our properties/states are hidden within the class, ensuring that our classes are robust.
+  - This is typically done by creating private propeties that can only be directly modified within the class,
+
+Abstraction:
+
+- This principle states that we should hide complexity by hiding unnecessary details within our classes
+
+  - This helps reduce complexity
+
+- An example of this can be through the example of an email service:
+
+  - In our example class, we can only call the sendEmail method, which will handle all the logic for sending the email
+  - This method, does however incorporate numerous other methods, to carry out its functionality
+  - Methods like connect, and authenticate, are private and hidden outside of our class as they are unnecessary implementation details which do not need to be accessed by our instances
+
+  ```ts
+  class MailService {
+    sendEmail() {
+      connect();
+      authenticate();
+      //Send Email
+      disconnect();
+    }
+  }
+  ```
+
+````
+
+Inheritance:
+
+- Inheritance is a mechanism for reusing code
+- It allows for us to set common properties and methods within a base class, wherein that base class can be extended for more specific implementation through child classes
+
+Polymorphism:
+
+- Polymorphism refers to the ability of an object to take on many fornms
+- A base class could contain methods which have differing implementation based on their child classes
+- In such cases, when extended, we can use the `override` keyword to change the implementation of said method
+- Now every different child class will have different implementation details for said method and have different behaviour when called
+- Essentially, our objects are able to take on different forms at runtime, depending on the type of subclass they are
+
+### SOLID Principles
+
+Single-Responsibility Principle
+
 ## UML Relationships
 
 UML (Unified Modeling Language) is a popular language used to model OOP systems:
@@ -40,7 +90,8 @@ UML (Unified Modeling Language) is a popular language used to model OOP systems:
   class Shape {
     private _size: Size;
   }
-  ```
+````
+
 - The Dependency Relationship is denoted using a dashed arrow
   - In this relationship, a class references another class
   ```ts
@@ -129,3 +180,23 @@ The most efficient way of implementing this is by using 3 classes:
     }
   }
   ```
+
+## Section 3: State Pattern
+
+### Problem
+
+Say we have an editing app like Photoshop with multiple tools available. Each tool performs different actions when the mouse is pressed and when the mouse is released on the canvas.
+One way we could implement this is by adding if/switch statements on both `mouseDown` and `mouseUp` events, based on the type of tool.
+The problem here is that it leads to a lot of repeated code, and is not maintainable as for each new tool we add, we have to update both the mouse down and up implementations.
+
+```ts
+class Canvas{
+
+  mouseDown(){
+    if(currentTool=="")
+  }
+
+}
+
+
+```
