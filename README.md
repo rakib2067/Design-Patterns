@@ -56,7 +56,7 @@ Abstraction:
   }
   ```
 
-````
+
 
 Inheritance:
 
@@ -104,7 +104,6 @@ UML (Unified Modeling Language) is a popular language used to model OOP systems:
   class Shape {
     private _size: Size;
   }
-````
 
 - The Dependency Relationship is denoted using a dashed arrow
   - In this relationship, a class references another class
